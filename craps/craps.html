@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craps Table</title>
+    <link rel="stylesheet" href="./craps.css">
+    <script type="text/javascript" src="./craps.js" defer></script>
+</head>
+
+<body>
+    <article>
+        <h1 id="error">Something went wrong!</h1>
+        <h2>CRAPS</h2>
+        <section class="betting-ui">
+            <div class="player">
+                <p class="player-role" id="shooter">You are the shooter!</p>
+                <p class="player-role" id="not-shooter">You are <span style="color: red;">not</span> the shooter!</p>
+                <button id="switch">switch role</button>
+            </div>
+            <div class="betting">
+                <div class="roll-bets" id="first-roll-bets">
+                    <h3>first roll bets:</h3>
+                    <div>
+                        <button id="PL">Pass Line</button>
+                        <button id="DPL">Don't Pass Line</button>
+                    </div>
+                </div>
+                <div class="roll-bets" id="later-roll-bets">
+                    <h3>later roll bets:</h3>
+                    <div>
+                        <button id="CB">Come Bets</button>
+                        <button id="DCB">Don't Come Bets</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="dice-section">
+            <div class="dice">
+                <ol class="die-list d-odd" data-roll="1" id="d1">
+                    <li class="die-item" data-side="1">
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="2">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="3">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="4">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="5">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="6">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                </ol>
+                <ol class="die-list d-even" data-roll="1" id="d2">
+                    <li class="die-item" data-side="1">
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="2">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="3">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="4">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="5">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                    <li class="die-item" data-side="6">
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </li>
+                </ol>
+            </div>
+            <button type="button" id="roll" disabled>Roll Dice</button>
+        </section>
+    </article>
+    <div id="reset">
+        <button id="resetknop">reset</button>
+    </div>
+</body>
+
+</html>
