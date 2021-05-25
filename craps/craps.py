@@ -1,3 +1,5 @@
+#this was a (not so complete) demo of craps I made in python on the train.
+
 #https://towardsdatascience.com/run-python-code-on-websites-exploring-brython-83c43fb7ac5f
 #https://stackoverflow.com/questions/7460938/how-to-run-python-script-in-webpage
 #https://www.digitalocean.com/community/tutorials/how-to-set-up-an-apache-mysql-and-python-lamp-server-without-frameworks-on-ubuntu-14-04
