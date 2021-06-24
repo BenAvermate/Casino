@@ -49,6 +49,11 @@ h3 {
   font-family: 'Roboto', sans-serif;
 }
 
+h4 {
+  font-size: 2rem;
+  color: #efefef;
+}
+
 /*
 betting-ui
 */
@@ -128,7 +133,7 @@ dobbelstenen
 
 .dice {
   display: grid;
-  grid-template: auto / repeat(auto-fit, minmax(8rem, 1fr));
+  grid-template: 3rem auto / repeat(auto-fit, minmax(8rem, 1fr));
   justify-items: center;
   align-items: center;
   padding: 2rem;
@@ -141,8 +146,15 @@ dobbelstenen
   /*#323232, #232323, #434343*/
 }
 
+.dice>h4 {
+  display: none;
+  grid-column-start: 1;
+  grid-column-end: span 2;
+}
+
 .die-list {
   display: grid;
+  grid-row: 2;
   grid-template: 1fr/1fr;
   list-style-type: none;
   transform-style: preserve-3d;

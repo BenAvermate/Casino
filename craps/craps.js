@@ -10,27 +10,29 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-an-apache-mysql-a
 //variabelen
 var shooter = true;
 var bet = null;
+var transitionEnd = whichTransitionEvent();
 //knoppen
-let roll = document.getElementById("roll")
+let roll = document.querySelector("#roll")
 //roll-knop
 roll.addEventListener("click", Roll);
 //switch-knop
-document.getElementById("switch").addEventListener("click", switchRole);
+document.querySelector("#switch").addEventListener("click", switchRole);
 //place-bet knoppen
-document.getElementById("PL").addEventListener("click", lineBetPL);
-document.getElementById("DPL").addEventListener("click", lineBetDPL);
+document.querySelector("#PL").addEventListener("click", lineBetPL);
+document.querySelector("#DPL").addEventListener("click", lineBetDPL);
 //reset
-document.getElementById("resetknop").addEventListener("click", reset)
+document.querySelector("#resetknop").addEventListener("click", reset)
+//update roll
+document.querySelector(".d-odd").addEventListener(transitionEnd, updateScore, false);
 
 //reset
 function reset() {
-    bet = null;
-    shooter = true
-    document.getElementById("not-shooter").style.display = "none";
-    document.getElementById("shooter").style.display = "block";
+    shooter = true;
+    document.querySelector("#not-shooter").style.display = "none";
+    document.querySelector(".dice>h4").style.display = "none";
+    document.querySelector("#shooter").style.display = "block";
     roll.disabled = true;
-    document.getElementById("PL").disabled = false;
-    document.getElementById("DPL").disabled = false;
+    resetBet()
 }
 //roll
 function Roll() {
@@ -62,35 +64,72 @@ function toggleClasses(die) {
 function randomNumber() {
     return Math.floor(Math.random() * 6) + 1;
 }
+//verandere roll-value
+function updateScore() {
+    const dice = [...document.querySelectorAll(".die-list")];
+    const sum = dice.reduce((sum, current) => sum + parseInt(current.dataset.roll), 0);
+    console.log(sum);
+    document.querySelector(".dice>h4").style.display = "block";
+    document.querySelector("#roll-result").innerHTML = sum;
+}
+
+function whichTransitionEvent() {
+    var t;
+    var el = document.createElement("testElement");
+    var transitions = {
+        'transition': 'transitionend',
+        'OTransition': 'oTransitionEnd',
+        'MozTransition': 'transitionend',
+        'WebkitTransition': 'webkitTransitionEnd'
+    }
+
+    for (t in transitions) {
+        if (el.style[t] !== undefined) {
+            return transitions[t];
+        }
+    }
+}
 
 //betting-functies
 //wissel rol
 function switchRole() {
+    let shooterButton = document.querySelector("#shooter");
+    let notShooterButton = document.querySelector("#not-shooter");
+    //TODO
+    resetBet();
     if (shooter) {
         shooter = false;
-        document.getElementById("not-shooter").style.display = "block";
-        document.getElementById("shooter").style.display = "none";
-        roll.disabled = false;
+        notShooterButton.style.display = "block";
+        shooterButton.style.display = "none";
+        roll.disabled = true;
     } else {
         shooter = true
-        document.getElementById("not-shooter").style.display = "none";
-        document.getElementById("shooter").style.display = "block";
+        notShooterButton.style.display = "none";
+        shooterButton.style.display = "block";
         roll.disabled = true;
     }
-    console.log(shooter);
+    console.log("shooter = " + shooter);
 }
 //bet
+function resetBet() {
+    console.log("Bet reset")
+    bet = null;
+    document.querySelector("#PL").disabled = false;
+    document.querySelector("#DPL").disabled = false;
+}
 function lineBetPL() {
+    //shooter or not
     console.log("PL");
     bet = "PL";
-    document.getElementById("PL").disabled = true;
-    document.getElementById("DPL").disabled = false;
+    document.querySelector("#PL").disabled = true;
+    document.querySelector("#DPL").disabled = false;
     roll.disabled = false;
 }
 function lineBetDPL() {
+    //shooter or not
     console.log("DPL");
     bet = "DPL";
-    document.getElementById("PL").disabled = false;
-    document.getElementById("DPL").disabled = true;
+    document.querySelector("#PL").disabled = false;
+    document.querySelector("#DPL").disabled = true;
     roll.disabled = false;
 }
